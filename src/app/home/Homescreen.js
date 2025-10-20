@@ -162,6 +162,22 @@ const HomeSlideshow = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
+  // Smooth scroll function
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      const navHeight = 80; // Height of sticky navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="relative w-full h-[600px] overflow-hidden bg-gray-900">
       {/* Slides */}
@@ -215,11 +231,17 @@ const HomeSlideshow = () => {
                   {slide.description}
                 </p>
                 <div className="flex gap-4 animate-fade-in-delay-3">
-                  <button className="px-8 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2">
+                  <button 
+                    onClick={(e) => handleSmoothScroll(e, '#tokilo')}
+                    className="px-8 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2"
+                  >
                     Learn More
                     <ArrowRight className="w-5 h-5" />
                   </button>
-                  <button className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                  <button 
+                    onClick={(e) => handleSmoothScroll(e, '#contact')}
+                    className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors"
+                  >
                     Contact Us
                   </button>
                 </div>
