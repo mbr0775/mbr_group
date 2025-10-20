@@ -6,7 +6,6 @@ import { ChevronDown, Menu, X, User, Search } from 'lucide-react';
 import { Inter } from 'next/font/google';
 import mbrlogo from '../../../public/mbrlogo.png';
 
-// Initialize the font
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
@@ -104,10 +103,25 @@ const Navigation = () => {
     setActiveDropdown(null);
   };
 
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      const navHeight = 80; // Height of sticky navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <nav className={`${inter.className} bg-white shadow-sm sticky top-0 z-50`}>
       {/* Desktop Navigation */}
-      <div className="hidden md:block border-b border-gray-200 ">
+      <div className="hidden md:block border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 cursor-pointer">
             {/* Left Side - Navigation Items */}
@@ -120,15 +134,23 @@ const Navigation = () => {
                     onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.id)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <button
-                      onClick={() => item.hasDropdown && setActiveDropdown(activeDropdown === item.id ? null : item.id)}
-                      className="flex items-center gap-2 text-gray-700 hover:text-[#2d4c7b] font-medium transition-colors duration-200"
-                    >
-                      <span>{item.label}</span>
-                      {item.hasDropdown && (
+                    {item.hasDropdown ? (
+                      <button
+                        onClick={() => setActiveDropdown(activeDropdown === item.id ? null : item.id)}
+                        className="flex items-center gap-2 text-gray-700 hover:text-[#2d4c7b] font-medium transition-colors duration-200"
+                      >
+                        <span>{item.label}</span>
                         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.id ? 'rotate-180' : ''}`} />
-                      )}
-                    </button>
+                      </button>
+                    ) : (
+                      <a
+                        href={item.href}
+                        onClick={(e) => handleSmoothScroll(e, item.href)}
+                        className="flex items-center gap-2 text-gray-700 hover:text-[#2d4c7b] font-medium transition-colors duration-200"
+                      >
+                        <span>{item.label}</span>
+                      </a>
+                    )}
 
                     {/* Dropdown Menu */}
                     {item.hasDropdown && activeDropdown === item.id && (
@@ -143,8 +165,11 @@ const Navigation = () => {
                                 <a
                                   key={subIdx}
                                   href={subItem.href}
+                                  onClick={(e) => {
+                                    handleSmoothScroll(e, subItem.href);
+                                    setActiveDropdown(null);
+                                  }}
                                   className="block px-4 py-2 text-gray-700 hover:bg-[#2d4c7b]/10 hover:text-[#2d4c7b] rounded-lg transition-colors duration-150"
-                                  onClick={() => setActiveDropdown(null)}
                                 >
                                   {subItem.name}
                                 </a>
@@ -161,7 +186,11 @@ const Navigation = () => {
 
             {/* Center Logo */}
             <div className="absolute left-1/2 transform -translate-x-[-90px]">
-              <a href="#home" className="flex items-center justify-center">
+              <a 
+                href="#home" 
+                onClick={(e) => handleSmoothScroll(e, '#home')}
+                className="flex items-center justify-center"
+              >
                 <Image 
                   src={mbrlogo} 
                   alt="MBR Group Logo" 
@@ -185,6 +214,7 @@ const Navigation = () => {
               {/* Contact Button */}
               <a
                 href="#contact"
+                onClick={(e) => handleSmoothScroll(e, '#contact')}
                 className="px-6 py-2 bg-[#2d4c7b] text-white rounded-lg font-medium hover:bg-[#243d63] transition-colors duration-200 shadow-sm hover:shadow-md"
               >
                 Contact
@@ -204,9 +234,9 @@ const Navigation = () => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d4c7b] focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d4c7b] focus:border-transparent transition-all duration-200 text-gray-900"
                 />
-                <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Search className="w-5 h-5 text-gray-900 absolute left-3 top-1/2 transform -translate-y-1/2" />
               </div>
             </div>
           )}
@@ -224,7 +254,11 @@ const Navigation = () => {
             >
               <Search className="w-6 h-6" />
             </button>
-            <a href="#home" className="flex items-center">
+            <a 
+              href="#home" 
+              onClick={(e) => handleSmoothScroll(e, '#home')}
+              className="flex items-center"
+            >
               <Image 
                 src={mbrlogo} 
                 alt="MBR Group Logo" 
@@ -249,9 +283,9 @@ const Navigation = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d4c7b] focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d4c7b] focus:border-transparent transition-all duration-200 text-gray-900"
               />
-              <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+              <Search className="w-5 h-5 text-gray-900 absolute left-3 top-1/2 transform -translate-y-1/2" />
             </div>
           </div>
         )}
@@ -284,11 +318,12 @@ const Navigation = () => {
                                   <a
                                     key={subIdx}
                                     href={subItem.href}
-                                    className="block px-3 py-1.5 text-sm text-gray-600 hover:bg-[#2d4c7b]/10 hover:text-[#2d4c7b] rounded-lg transition-colors"
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                      handleSmoothScroll(e, subItem.href);
                                       setMobileMenuOpen(false);
                                       setMobileDropdownOpen(false);
                                     }}
+                                    className="block px-3 py-1.5 text-sm text-gray-600 hover:bg-[#2d4c7b]/10 hover:text-[#2d4c7b] rounded-lg transition-colors"
                                   >
                                     {subItem.name}
                                   </a>
@@ -301,8 +336,11 @@ const Navigation = () => {
                     ) : (
                       <a
                         href={item.href}
+                        onClick={(e) => {
+                          handleSmoothScroll(e, item.href);
+                          setMobileMenuOpen(false);
+                        }}
                         className="block px-3 py-2.5 text-gray-800 hover:bg-gray-50 rounded-lg transition-colors text-sm"
-                        onClick={() => setMobileMenuOpen(false)}
                       >
                         <span className="font-medium">{item.label}</span>
                       </a>  
@@ -325,8 +363,11 @@ const Navigation = () => {
                 <div className="px-2">
                   <a
                     href="#contact"
+                    onClick={(e) => {
+                      handleSmoothScroll(e, '#contact');
+                      setMobileMenuOpen(false);
+                    }}
                     className="block w-full px-3 py-2.5 bg-[#2d4c7b] text-white text-center rounded-lg font-medium hover:bg-[#243d63] transition-colors text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Contact Us
                   </a>
