@@ -80,9 +80,43 @@ const OurBusiness = () => {
           </div>
         </div>
       </section>
+
+            {/* Tourism & Travel - Fixthan */}
+      <section id="fixthan" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            {/* Image */}
+            <div>
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80" 
+                  alt="Travel and Tourism"
+                  className="w-full h-[400px] object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Text Content */}
+            <div>
+              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+                Travel Excellence
+              </p>
+              <h2 className="text-5xl font-bold mb-6 text-gray-900">Fixthan</h2>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                  Your gateway to reliable home maintenance solutions. Fixthan offers comprehensive service bookings 
+                  including carpentry, plumbing, and masonry work, connecting skilled professionals with homeowners 
+                  seamlessly, always delivering excellence.
+              </p>
+              <button className="px-8 py-4 bg-[#264169] text-white rounded-full font-semibold hover:bg-[#1e3351] transition-colors duration-300 shadow-lg hover:shadow-xl">
+                Explore Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
       
-      {/* Agriculture & Livestock - Goviceylon */}
-      <section id="goviceylon" className="py-20 bg-white">
+      {/* Agriculture & Livestock - Agrozin */}
+      <section id="agrozin" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             {/* Text Content */}
@@ -90,7 +124,7 @@ const OurBusiness = () => {
               <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
                 Sustainable Farming
               </p>
-              <h2 className="text-5xl font-bold mb-6 text-gray-900">Goviceylon</h2>
+              <h2 className="text-5xl font-bold mb-6 text-gray-900">Agrozin</h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                 We champion sustainable agriculture practices that promote food security, empower local farmers, 
                 and ensure environmental stewardship for future generations, fostering a healthier planet, 
@@ -318,6 +352,46 @@ const OurBusiness = () => {
           </div>
         </div>
       </section>
+
+
+            {/* Tourism & Travel - Genexza */}
+      <section id="genexza" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            {/* Image */}
+            <div>
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80" 
+                  alt="Travel and Tourism"
+                  className="w-full h-[400px] object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Text Content */}
+            <div>
+              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+                Travel Excellence
+              </p>
+              <h2 className="text-5xl font-bold mb-6 text-gray-900">Genexza</h2>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                Revolutionizing urban mobility for modern commuters. Genexza provides integrated travel and public transport 
+                services with seamless ticket booking, live bus tracking, route suggestions, and multi-modal journey planning.
+                Download our mobile app today for hassle-free commuting and smart travel solutions.
+              </p>
+              <button className="px-8 py-4 bg-[#264169] text-white rounded-full font-semibold hover:bg-[#1e3351] transition-colors duration-300 shadow-lg hover:shadow-xl">
+                Explore Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
       
       {/* Tourism & Travel - Tripzem */}
       <section id="tripzem" className="py-20 bg-gray-50">

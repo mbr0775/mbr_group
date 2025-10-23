@@ -40,12 +40,13 @@ const Navigation = () => {
           items: [
             { name: 'Tokilo Technologies', href: '#tokilo' },
             { name: 'Athimart', href: '#athimart' },
+            { name: 'Fixthan', href: '#fixthan' },
           ],
         },
         {
           category: 'Agriculture & Livestock',
           items: [
-            { name: 'Goviceylon', href: '#goviceylon' },
+            { name: 'Agrozin', href: '#agrozin' },
             { name: 'Agroherds', href: '#agroherds' },
           ],
         },
@@ -61,8 +62,10 @@ const Navigation = () => {
           items: [
             { name: 'Pistano', href: '#pistano' },
             { name: 'Shipzem', href: '#shipzem' },
+
           ],
         },
+
         {
           category: 'Energy & Power',
           items: [
@@ -73,6 +76,7 @@ const Navigation = () => {
           category: 'Tourism & Travel',
           items: [
             { name: 'Tripzem', href: '#tripzem' },
+            { name: 'Genexza', href: '#genexza' },
           ],
         },
         {
