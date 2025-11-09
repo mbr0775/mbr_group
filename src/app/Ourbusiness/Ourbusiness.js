@@ -218,7 +218,10 @@ const OurBusiness = () => {
                 comprehensive services for livestock farming, including health management, breeding programs, 
                 and supply chain optimization, always delivering excellence.
               </p>
-              <button className="px-8 py-4 bg-[#264169] text-white rounded-full font-semibold hover:bg-[#1e3351] transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <button 
+                onClick={() => window.open('https://agroherds-website.vercel.app/', '_blank')}
+                className="px-8 py-4 bg-[#264169] text-white rounded-full font-semibold hover:bg-[#1e3351] transition-colors duration-300 shadow-lg hover:shadow-xl"
+              >
                 Discover More
               </button>
             </div>
